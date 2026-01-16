@@ -231,6 +231,9 @@ loginForm.addEventListener('submit', async (e) => {
         if (result.success) {
             showMessage(result.message, 'success');
 
+            // Save login state
+            localStorage.setItem('isLoggedIn', 'true');
+
             // Save User ID if checkbox is checked
             if (saveUserIdCheckbox.checked) {
                 localStorage.setItem('savedUserId', userId);
@@ -238,12 +241,10 @@ loginForm.addEventListener('submit', async (e) => {
                 localStorage.removeItem('savedUserId');
             }
 
-            // Simulate redirect after success
+            // Redirect to dashboard after success
             setTimeout(() => {
-                // In a real app, you would redirect to the dashboard
-                // window.location.href = '/dashboard';
-                console.log('Redirect to dashboard...');
-            }, 2000);
+                window.location.href = 'dashboard.html';
+            }, 1500);
         } else {
             showMessage(result.message, 'error');
             // Shake the form on error
