@@ -127,7 +127,7 @@ function simulateAuthentication(userId, password) {
                     message: 'Invalid User ID or Password. Please try again.'
                 });
             }
-        }, 1500);
+        }, 1000);
     });
 }
 
