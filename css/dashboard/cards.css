@@ -1,0 +1,116 @@
+/* Card Base */
+.card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-100);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.card-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.card-action {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--primary-600);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.card-action:hover {
+    color: var(--primary-700);
+}
+
+/* Accounts List */
+.accounts-list {
+    padding: var(--space-md);
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.account-item:hover {
+    background: var(--gray-50);
+}
+
+.account-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.account-icon.checking {
+    background: var(--primary-100);
+    color: var(--primary-600);
+}
+
+.account-icon.savings {
+    background: var(--success-100);
+    color: var(--success-600);
+}
+
+.account-icon.credit {
+    background: var(--warning-50);
+    color: var(--warning-600);
+}
+
+.account-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-name {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--gray-800);
+}
+
+.account-number {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+}
+
+.account-balance {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.balance-amount {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.balance-amount.credit-balance {
+    color: var(--error-500);
+}
+
+.balance-label {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}

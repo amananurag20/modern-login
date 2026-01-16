@@ -1,0 +1,134 @@
+/* Login Page Layout */
+body.login-page {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+}
+
+/* Main Container */
+.login-container {
+    display: flex;
+    width: 100%;
+    max-width: 920px;
+    min-height: auto;
+    max-height: 620px;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+/* Right Panel - Form Section */
+.form-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-lg) var(--space-xl);
+    background: white;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+.form-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.form-panel::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: var(--radius-full);
+}
+
+.form-panel::-webkit-scrollbar-thumb {
+    background: var(--primary-300);
+    border-radius: var(--radius-full);
+}
+
+.form-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-400);
+}
+
+.form-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 340px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.025em;
+}
+
+/* Welcome Text */
+.welcome-text {
+    margin-bottom: var(--space-lg);
+}
+
+.welcome-text h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: var(--space-xs);
+}
+
+.welcome-text p {
+    color: var(--gray-500);
+    font-size: 0.8rem;
+}
+
+/* Form Links */
+.form-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-lg);
+}
+
+.form-links a {
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.link-primary {
+    color: var(--primary-600);
+    font-weight: 500;
+}
+
+.link-primary:hover {
+    color: var(--primary-700);
+    text-decoration: underline;
+}
+
+.link-secondary {
+    color: var(--primary-500);
+    font-size: 0.8rem;
+}
+
+.link-secondary:hover {
+    color: var(--primary-600);
+    text-decoration: underline;
+}

@@ -1,0 +1,115 @@
+/* Sign In Button */
+.btn-signin {
+    position: relative;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.btn-signin::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.btn-signin:hover::before {
+    opacity: 1;
+}
+
+.btn-signin:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-signin:active {
+    transform: translateY(0);
+}
+
+.btn-signin:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-text,
+.btn-loader {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-loader.hidden {
+    display: none;
+}
+
+/* Loading Spinner */
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+.spinner-circle {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 45;
+    stroke-linecap: round;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Message Container */
+.message-container {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    animation: slideIn 0.3s ease;
+}
+
+.message-container.hidden {
+    display: none;
+}
+
+.message-container.success {
+    background: var(--success-50);
+    color: var(--success-600);
+    border: 1px solid var(--success-500);
+}
+
+.message-container.error {
+    background: var(--error-50);
+    color: var(--error-600);
+    border: 1px solid var(--error-500);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

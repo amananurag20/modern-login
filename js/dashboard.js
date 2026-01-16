@@ -1,22 +1,8 @@
-/**
- * SecureBank Dashboard - JavaScript
- * Handles dashboard functionality and logout
- */
-
-// ============================================
 // DOM Elements
-// ============================================
 const logoutBtn = document.getElementById('logoutBtn');
 const currentDateEl = document.getElementById('currentDate');
 
-// ============================================
-// Utility Functions
-// ============================================
-
-/**
- * Formats the current date
- * @returns {string} Formatted date string
- */
+// Format current date to readable string
 function formatDate() {
     const options = {
         weekday: 'long',
@@ -27,53 +13,35 @@ function formatDate() {
     return new Date().toLocaleDateString('en-US', options);
 }
 
-/**
- * Handles logout functionality
- */
+// Handle logout - clear session and redirect
 function handleLogout() {
-    // Clear any stored session data
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('savedUserId');
-
-    // Redirect to login page
     window.location.href = 'index.html';
 }
 
-/**
- * Checks if user is logged in
- */
+// Check if user is authenticated
 function checkAuth() {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-        // Redirect to login if not authenticated
         window.location.href = 'index.html';
     }
 }
 
-// ============================================
-// Event Listeners
-// ============================================
-
-// Logout button click
+// Logout button click handler
 logoutBtn.addEventListener('click', handleLogout);
 
-// ============================================
-// Initialization
-// ============================================
-
-/**
- * Initialize the dashboard
- */
+// Initialize dashboard on page load
 function init() {
-    // Check authentication
+    // Check if user is logged in
     checkAuth();
 
-    // Set current date
+    // Display current date
     if (currentDateEl) {
         currentDateEl.textContent = formatDate();
     }
 
-    // Add animation to cards on load
+    // Animate cards on load
     const cards = document.querySelectorAll('.stat-card, .card');
     cards.forEach((card, index) => {
         card.style.opacity = '0';
@@ -86,5 +54,4 @@ function init() {
     });
 }
 
-// Run initialization when DOM is ready
 document.addEventListener('DOMContentLoaded', init);

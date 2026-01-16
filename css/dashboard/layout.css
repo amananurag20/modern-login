@@ -1,0 +1,101 @@
+/* Dashboard Page Layout */
+body.dashboard-page {
+    background: var(--gray-100);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    width: 100%;
+}
+
+/* Welcome Section */
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xl);
+}
+
+.welcome-text h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-xs);
+}
+
+.welcome-text h1 span {
+    color: var(--primary-600);
+}
+
+.welcome-text p {
+    color: var(--gray-500);
+    font-size: 0.9375rem;
+}
+
+/* Quick Action Buttons */
+.quick-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.action-btn.primary {
+    background: var(--primary-600);
+    color: white;
+    border: none;
+}
+
+.action-btn.primary:hover {
+    background: var(--primary-700);
+    transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+    background: white;
+    color: var(--gray-700);
+    border: 1px solid var(--gray-200);
+}
+
+.action-btn.secondary:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+}
+
+/* Footer */
+.footer {
+    background: white;
+    border-top: 1px solid var(--gray-200);
+    padding: var(--space-md) var(--space-xl);
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}

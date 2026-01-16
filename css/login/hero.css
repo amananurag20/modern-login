@@ -1,0 +1,69 @@
+/* Left Panel - Hero Section */
+.hero-panel {
+    flex: 0 0 380px;
+    position: relative;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2d5a3d 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-xl);
+    overflow: hidden;
+}
+
+.hero-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23fbbf24" stop-opacity="0.3"/><stop offset="50%" stop-color="%23f97316" stop-opacity="0.2"/><stop offset="100%" stop-color="%23dc2626" stop-opacity="0.1"/></linearGradient></defs><circle cx="80" cy="20" r="40" fill="url(%23g)"/></svg>') no-repeat top right,
+        linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+    background-size: 150% 150%, 100% 100%;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at top right, rgba(251, 191, 36, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: var(--space-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+}
+
+.hero-title span {
+    background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 300px;
+    line-height: 1.6;
+}

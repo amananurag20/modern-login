@@ -1,0 +1,89 @@
+/* Footer */
+.form-footer {
+    text-align: center;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--gray-100);
+    margin-top: var(--space-lg);
+}
+
+.footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--gray-100);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+}
+
+.footer-badge svg {
+    color: var(--gray-600);
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    letter-spacing: 0.05em;
+}
+
+.footer-info {
+    font-size: 0.6875rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+        max-width: 480px;
+    }
+
+    .hero-panel {
+        min-height: 200px;
+        padding: var(--space-xl);
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .form-panel {
+        padding: var(--space-xl);
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+    body.login-page {
+        padding: 0;
+        background: white;
+    }
+
+    .login-container {
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+    }
+
+    .hero-panel {
+        min-height: 160px;
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .form-panel {
+        padding: var(--space-lg);
+    }
+
+    .welcome-text h2 {
+        font-size: 1.25rem;
+    }
+}

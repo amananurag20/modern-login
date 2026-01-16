@@ -1,11 +1,4 @@
-/**
- * SecureBank Login Page - JavaScript
- * Handles form validation, authentication simulation, and UI interactions
- */
-
-// ============================================
 // DOM Elements
-// ============================================
 const loginForm = document.getElementById('loginForm');
 const userIdInput = document.getElementById('userId');
 const passwordInput = document.getElementById('password');
@@ -16,24 +9,13 @@ const passwordToggle = document.getElementById('passwordToggle');
 const messageContainer = document.getElementById('messageContainer');
 const saveUserIdCheckbox = document.getElementById('saveUserId');
 
-// ============================================
-// Hardcoded Credentials (for simulation)
-// ============================================
+// Valid credentials for login
 const VALID_CREDENTIALS = {
     userId: 'admin',
     password: '123456'
 };
 
-// ============================================
-// Utility Functions
-// ============================================
-
-/**
- * Shows an error message for an input field
- * @param {HTMLElement} inputWrapper - The input wrapper element
- * @param {HTMLElement} errorElement - The error message element
- * @param {string} message - The error message to display
- */
+// Show error message below input field
 function showError(inputWrapper, errorElement, message) {
     inputWrapper.classList.add('error');
     errorElement.textContent = message;
@@ -47,21 +29,13 @@ function showError(inputWrapper, errorElement, message) {
     `;
 }
 
-/**
- * Clears the error state for an input field
- * @param {HTMLElement} inputWrapper - The input wrapper element
- * @param {HTMLElement} errorElement - The error message element
- */
+// Clear error state from input field
 function clearError(inputWrapper, errorElement) {
     inputWrapper.classList.remove('error');
     errorElement.textContent = '';
 }
 
-/**
- * Displays a message (success or error) in the message container
- * @param {string} message - The message to display
- * @param {string} type - The type of message ('success' or 'error')
- */
+// Display success or error message
 function showMessage(message, type) {
     messageContainer.classList.remove('hidden', 'success', 'error');
     messageContainer.classList.add(type);
@@ -80,18 +54,13 @@ function showMessage(message, type) {
     messageContainer.innerHTML = `${icon}<span>${message}</span>`;
 }
 
-/**
- * Hides the message container
- */
+// Hide the message container
 function hideMessage() {
     messageContainer.classList.add('hidden');
     messageContainer.classList.remove('success', 'error');
 }
 
-/**
- * Sets the loading state of the sign-in button
- * @param {boolean} isLoading - Whether the button should show loading state
- */
+// Toggle loading state on button
 function setLoadingState(isLoading) {
     const btnText = signInBtn.querySelector('.btn-text');
     const btnLoader = signInBtn.querySelector('.btn-loader');
@@ -107,27 +76,26 @@ function setLoadingState(isLoading) {
     }
 }
 
-/**
- * Validates a single field
- * @param {HTMLInputElement} input - The input element to validate
- * @returns {boolean} - Whether the field is valid
- */
+// Validate individual input field
 function validateField(input) {
     const inputWrapper = input.closest('.input-wrapper');
     const errorElement = input.closest('.input-group').querySelector('.error-message');
     const value = input.value.trim();
 
+    // Check if field is empty
     if (!value) {
         const fieldName = input.id === 'userId' ? 'User ID' : 'Password';
         showError(inputWrapper, errorElement, `${fieldName} is required`);
         return false;
     }
 
+    // Check minimum length for User ID
     if (input.id === 'userId' && value.length < 3) {
         showError(inputWrapper, errorElement, 'User ID must be at least 3 characters');
         return false;
     }
 
+    // Check minimum length for Password
     if (input.id === 'password' && value.length < 6) {
         showError(inputWrapper, errorElement, 'Password must be at least 6 characters');
         return false;
@@ -137,25 +105,16 @@ function validateField(input) {
     return true;
 }
 
-/**
- * Validates the entire form
- * @returns {boolean} - Whether the form is valid
- */
+// Validate entire form
 function validateForm() {
     const isUserIdValid = validateField(userIdInput);
     const isPasswordValid = validateField(passwordInput);
     return isUserIdValid && isPasswordValid;
 }
 
-/**
- * Simulates authentication
- * @param {string} userId - The user ID
- * @param {string} password - The password
- * @returns {Promise<object>} - The authentication result
- */
+// Simulate authentication with delay
 function simulateAuthentication(userId, password) {
     return new Promise((resolve) => {
-        // Simulate network delay
         setTimeout(() => {
             if (userId === VALID_CREDENTIALS.userId && password === VALID_CREDENTIALS.password) {
                 resolve({
@@ -172,11 +131,7 @@ function simulateAuthentication(userId, password) {
     });
 }
 
-// ============================================
-// Event Listeners
-// ============================================
-
-// Password visibility toggle
+// Toggle password visibility
 passwordToggle.addEventListener('click', () => {
     const type = passwordInput.type === 'password' ? 'text' : 'password';
     passwordInput.type = type;
@@ -188,11 +143,11 @@ passwordToggle.addEventListener('click', () => {
     eyeOffIcon.classList.toggle('hidden');
 });
 
-// Real-time validation on blur
+// Validate on blur (when user leaves the field)
 userIdInput.addEventListener('blur', () => validateField(userIdInput));
 passwordInput.addEventListener('blur', () => validateField(passwordInput));
 
-// Clear errors on input
+// Clear errors when user starts typing
 userIdInput.addEventListener('input', () => {
     const inputWrapper = userIdInput.closest('.input-wrapper');
     const errorElement = document.getElementById('userIdError');
@@ -207,25 +162,22 @@ passwordInput.addEventListener('input', () => {
     hideMessage();
 });
 
-// Form submission
+// Handle form submission
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     hideMessage();
 
-    // Validate form
+    // Validate form before submitting
     if (!validateForm()) {
         return;
     }
 
-    // Set loading state
     setLoadingState(true);
 
-    // Get form values
     const userId = userIdInput.value.trim();
     const password = passwordInput.value;
 
     try {
-        // Simulate authentication
         const result = await simulateAuthentication(userId, password);
 
         if (result.success) {
@@ -241,15 +193,16 @@ loginForm.addEventListener('submit', async (e) => {
                 localStorage.removeItem('savedUserId');
             }
 
-            // Redirect to dashboard after success
+            // Redirect to dashboard
             setTimeout(() => {
                 window.location.href = 'dashboard.html';
             }, 1500);
         } else {
             showMessage(result.message, 'error');
-            // Shake the form on error
+
+            // Shake animation on error
             loginForm.style.animation = 'none';
-            loginForm.offsetHeight; // Trigger reflow
+            loginForm.offsetHeight;
             loginForm.style.animation = 'shake 0.5s ease';
         }
     } catch (error) {
@@ -260,13 +213,7 @@ loginForm.addEventListener('submit', async (e) => {
     }
 });
 
-// ============================================
-// Initialization
-// ============================================
-
-/**
- * Initialize the login page
- */
+// Initialize page on load
 function init() {
     // Load saved User ID if exists
     const savedUserId = localStorage.getItem('savedUserId');
@@ -275,7 +222,7 @@ function init() {
         saveUserIdCheckbox.checked = true;
     }
 
-    // Add shake animation keyframes dynamically
+    // Add shake animation keyframes
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
         @keyframes shake {
@@ -292,5 +239,4 @@ function init() {
     }
 }
 
-// Run initialization when DOM is ready
 document.addEventListener('DOMContentLoaded', init);
